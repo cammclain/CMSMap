@@ -30,6 +30,11 @@ func main() {
 			break
 		}
 
+		if strings.TrimSpace(line) == "help" {
+			fmt.Println(commands.GetHelp())
+			continue
+		}
+
 		args := strings.Fields(line)
 		if len(args) == 0 {
 			continue
@@ -43,4 +48,21 @@ func main() {
 		}
 
 	}
+}
+
+
+args := strings.Fields(line)
+if len(args) == 0 {
+    continue
+}
+
+if args[0] == "help" || len(args) > 1 && args[1] == "-h" {
+    command := args[0]
+    if args[0] == "help" && len(args) > 1 {
+        command = args[1]
+    }
+    if handler, ok := commands.GetHandler(command); ok {
+        fmt.Println(handler.Help())
+        continue
+    }
 }

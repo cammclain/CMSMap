@@ -6,6 +6,7 @@ import (
 
 type CommandHandler interface {
 	Handle(args []string) string
+	Help() string
 }
 
 var (

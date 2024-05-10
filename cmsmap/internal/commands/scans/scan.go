@@ -1,4 +1,8 @@
-package commands
+package scans
+
+import (
+	"cmsmap/internal/commands"
+)
 
 type ScanCommand struct{}
 
@@ -11,5 +15,5 @@ func (s *ScanCommand) Handle(args []string) string {
 }
 
 func init() {
-	RegisterCommand("scan", new(ScanCommand))
+	commands.RegisterCommand("scan", new(ScanCommand))
 }
